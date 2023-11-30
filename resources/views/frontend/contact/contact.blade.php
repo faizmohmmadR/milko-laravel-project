@@ -2,6 +2,8 @@
 
 @section('contents')
 
+@include('frontend.header.header')
+
 
     <!-- Contact Start -->
     <div class="container-xxl py-5">

@@ -1,6 +1,7 @@
 @extends('frontend.layout.master')
 
 @section('contents')
+@include('frontend.header.header')
     <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">

@@ -2,7 +2,7 @@
 
 @section('contents')
 
-
+@include('frontend.header.header')
     <!-- Product Start -->
     <div class="container-xxl py-5">
         <div class="container">
