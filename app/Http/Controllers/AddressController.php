@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Address;
 use Illuminate\Http\Request;
 
+
 class AddressController extends Controller
 {
     /**
@@ -21,7 +22,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        return view('backend.addingPosts.addAddress');
+        return view('backend.addresses.addingPosts.addAddress');
     }
 
     /**
@@ -32,7 +33,7 @@ class AddressController extends Controller
         $request->validate([
             'streetNumber'=>'required|max:4',
             'streetName'=>'required|max:50',
-            'district'=>'required|maz:100',
+            'district'=>'required|max:100',
         ]);
         
         Address::create(['streetNumber'=> $request->streetNumber,'streetName'=>$request->streetName,'district'=>$request->district]);
@@ -51,17 +52,28 @@ class AddressController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Address $address)
     {
-        //
+        return view('backend.addresses.editAddress.editAddress')->with('address',$address);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,Address $address)
     {
-        //
+        $request->validate([
+            'streetNumber'=>'required|max:4',
+            'streetName'=>'required|max:50',
+            'district'=>'required|max:100',
+        ]);
+
+        $address->streetNumber = $request->streetNumber;
+        $address->streetName   = $request->streetName;
+        $address->district = $request->district;
+        $address->save();
+        return redirect()->route('address.index');
+
     }
 
     /**

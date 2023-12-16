@@ -1,6 +1,5 @@
 @extends('backend.dashboard.index')
 
-
 @section('contents')
 <div class="container-fluid" style="padding: 10px; background-color: gray">
   <div class="card-header" style="display: flex;justify-content: space-between;align-items: center" >
@@ -25,7 +24,7 @@
                 <td>{{ $address->streetNumber }}</td>
                 <td>{{ $address->streetName }}</td>
                 <td>{{ $address->district }}</td>
-                <th><a href="#">Edit</a>|<a href="#">Delete</a></th>
+                <th><a href="{{route('address.edit',['address'=>$address->id])}}">Edit</a>|<a href="#">Delete</a></th>
             </tr>
             @endforeach
         </tbody>
