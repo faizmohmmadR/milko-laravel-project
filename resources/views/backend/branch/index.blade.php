@@ -3,29 +3,31 @@
 @section('contents')
 <div class="container-fluid" style="padding: 10px; background-color: gray">
   <div class="card-header" style="display: flex;justify-content: space-between;align-items: center" >
-   <h3> Address</h3>
-    <a href="{{route('address.create')}}" class="btn btn-success float-right" style="align-items: end;">Add Address</a>
+   <h3> Category</h3>
+    <a href="{{route('branch.create')}}" class="btn btn-success float-right" style="align-items: end;">Add Branch</a>
 </div>
   <div class="card-body">
     <table class="table">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Street Number</th>
-                <th>Street Name</th>
-                <th>District</th>
-                <th>Action</th>
+                <th>Branch Name</th>
+                <th>Branch Address</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($addresses as $address)
+            @foreach($branches as $branch)
             <tr>
-                <td>{{ $address->id }}</td>
-                <td>{{ $address->streetNumber }}</td>
-                <td>{{ $address->streetName }}</td>
-                <td>{{ $address->district }}</td>
-                <th><a href="{{route('address.edit',['address'=>$address->id])}}">Edit</a>|
-                <a class="delete" id="{{$address->id}}" href="#">Delete</a></th>
+                <td>{{ $branch->id }}</td>
+                <td>{{ $branch->branchName }}</td>
+                <td>{{ $branch->branchAddress }}</td>
+                <th><a href="{{route('branch.edit',['branch'=>$branch->id])}}">Edit</a>|
+
+                <form action="{{route('branch.destroy',['branch'=>$branch->id])}}" method='POST' style="width: 80vh;margin: 0px auto">
+                  @csrf
+                  @method('DELETE')
+                     <input type="submit" placeholder="delete">
+                </form>    
             </tr>
             @endforeach
         </tbody>

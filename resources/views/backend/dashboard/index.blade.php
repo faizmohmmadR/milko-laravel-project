@@ -5,6 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="{{csrf_token()}}">
   <title>dashboard </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('backend/vendors/feather/feather.css')}}">
@@ -411,9 +412,12 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{route('address.index')}}">Address</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('address.index')}}">Addresses</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('category.index')}}">Categories</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('branch.index')}}">Branches</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('customer.index')}}">Customers</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('employe.index')}}">Employies</a></li>
+                
               </ul>
             </div>
           </li>
@@ -514,6 +518,7 @@
   <script src="{{asset('backend/vendors/progressbar.js/progressbar.min.js')}}"></script>
   <!-- End plugin js for this page -->
   <!-- inject:js -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
   <script src="{{asset('backend/js/off-canvas.js')}}"></script>
   <script src="{{asset('backend/js/hoverable-col')}}lapse.js')}}"></script>
   <script src="{{asset('backend/js/template.js')}}"></script>
@@ -523,6 +528,8 @@
   <!-- Custom js for this page-->
   <script src="{{asset('backend/js/jquery.cookie.js')}}" type="text/javascript"></script>
   <script src="{{asset('backend/js/dashboard.js')}}"></script>
+
+  @yield('script')
   <!-- <script src="../../js/Chart.roundedBarCharts.js"></script> -->
   <!-- End custom js for this page-->
 </body>

@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +60,10 @@ Route::get('/notFound',function(){
 
 
 Route::resource('/address',AddressController::class);
+Route::resource('category',CategoryController::class);
+Route::resource('customer',CustomerController::class);
+Route::resource('branch',BranchController::class);
+Route::resource('employe',EmployeController::class);
 
 // Route::get('/', function () {
 //     return view('backend.dashboard.index');
