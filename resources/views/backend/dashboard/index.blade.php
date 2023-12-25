@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -14,6 +13,8 @@
   <link rel="stylesheet" href="{{asset('backend/vendors/typicons/typicons.css')}}">
   <link rel="stylesheet" href="{{asset('backend/vendors/simple-line-icons/css/simple-line-icons.css')}}">
   <link rel="stylesheet" href="{{asset('backend/vendors/css/vendor.bundle.base.css')}}">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="{{asset('backend/vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
@@ -64,7 +65,7 @@
       <div class="navbar-menu-wrapper d-flex align-items-top"> 
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
+            <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold"> Faiz M.H</span></h1>
             <h3 class="welcome-sub-text">Your performance summary this week </h3>
           </li>
         </ul>
@@ -417,6 +418,9 @@
                 <li class="nav-item"> <a class="nav-link" href="{{route('branch.index')}}">Branches</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{route('customer.index')}}">Customers</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{route('employe.index')}}">Employies</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('product.index')}}">Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('sales.index')}}">Sales</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('purches.index')}}">Purcheses</a></li>
                 
               </ul>
             </div>
@@ -528,6 +532,7 @@
   <!-- Custom js for this page-->
   <script src="{{asset('backend/js/jquery.cookie.js')}}" type="text/javascript"></script>
   <script src="{{asset('backend/js/dashboard.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
   @yield('script')
   <!-- <script src="../../js/Chart.roundedBarCharts.js"></script> -->
