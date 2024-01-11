@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Sales;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SalesController extends Controller
 {
@@ -42,23 +44,9 @@ class SalesController extends Controller
         ]);
 
 
-        // Sales::create([
-        // 'productID' => $request->productID,
-        // 'userID' => 1,
-        // 'branchID' => $request->branchID,
-        // 'categoryID' => $request->categoryID,
-        // 'customerID' => $request->customerID,
-        // 'quantity' => $request->quantity,
-        // 'unite' => $request->unite,
-        // 'unitePrice' => $request->unitePrice,
-        // 'totalPrice' => $request->totalPrice,
-        // ]);
-
-        // return redirect()->route('sales.index');
-
         $sales = new Sales();
-        $sales->productID = 1;
-        $sales->userID      =  1;
+        $user = Auth::user();
+        $sales->userID      =  $user->id;
         $sales->branchID    =  $request->input('branchID');
         $sales->categoryID  =  $request->input('categoryID');
         $sales->customerID  =  $request->input('customerID');
@@ -67,8 +55,11 @@ class SalesController extends Controller
         $sales->unitePrice  =  $request->input('unitePrice');
         $sales->totalPrice  = $request->input('totalPrice');
         $sales->save();
-        // $sales->products()->attach($request->productID);
-        // $sales();
+
+        $sales->products()->attach($request->productID);
+
+        return redirect()->route('sales.index');
+
     }
 
 
@@ -88,7 +79,7 @@ class SalesController extends Controller
      */
     public function edit(Sales $sale)
     {
-        return view('backend.sales.editSales')->with('sale',$sale);
+        return view('backend.sales.editSales')->with('sale',$sale)->with('products',$sale->products);
     }
 
     /**
@@ -107,7 +98,6 @@ class SalesController extends Controller
             'totalPrice' => 'required|max:50',
         ]);
 
-        $sale->productID  = $request->productID;
         $sale->branchID  = $request->branchID;
         $sale->categoryID  = $request->categoryID;
         $sale->customerID  = $request->customerID;
@@ -116,6 +106,8 @@ class SalesController extends Controller
         $sale->unitePrice  = $request->unitePrice;
         $sale->totalPrice  = $request->totalPrice;
         $sale->save();
+
+        $sale->products()->attach($request->productID);
 
         
         return redirect()->route('sales.index');

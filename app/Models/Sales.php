@@ -9,8 +9,9 @@ class Sales extends Model
 {
     use HasFactory;
 
-    public function products(){
-        return $this->belongsToMany(Product::class,'_products__sales','productID','id');
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, '_products__sales', 'salesID', 'productID');
     }
 
     public function customer(){

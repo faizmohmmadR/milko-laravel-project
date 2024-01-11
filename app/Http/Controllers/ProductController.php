@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -40,13 +41,14 @@ class ProductController extends Controller
             'categoryID' => 'required|max: 50',
         ]);
 
+        $user = Auth::user();
         Product::create([ 
             'ProductName' => $request->ProductName,	
             'description' => $request->description,	
             'price' => $request->price,	
             'quantity' => $request->quantity,	
             'unite' => $request->unite,	
-            'userID' => 1,	
+            'userID' => $user->id,	
             'branchID' => $request->branchID,	
             'categoryID' => $request->categoryID]);
 

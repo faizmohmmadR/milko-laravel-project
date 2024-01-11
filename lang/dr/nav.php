@@ -1,0 +1,40 @@
+<?php 
+
+return [
+    'Home' => 'خانه',
+    'About' => 'در باره ما',
+    'Services' => 'خدمات',
+    'Products' => 'محصولات',
+    'Dashboard' => 'داشبورد',
+    'Pages' => 'صفحه ها',
+    'Contact' => 'ارتباط',
+    'Gallery' => 'گالری',
+    'Features' => 'خصوصیات',
+    'Our_Team' => 'تیم ما',
+    'Testimonial' => 'تستونونیال',
+    'Not_found_page' =>'پیدا نشد',
+    'Language' =>'زبان',
+    'English' => 'انگلسی',
+    'Dari' => 'دری',
+    'Call_us' => 'تماس با ما',
+    'Milko' => 'میلکو',
+    'Our_office' => 'دفتر ما',
+    'Address' => 'ناحیه اول, کندهار ولایت, افغانستان',
+    'Quick_Links' => 'لینک های سریع',
+    'Terms_&_Condition' => 'ترم ها و شرایط',
+    'Support' => 'پشتبانی',
+    'Business_Hours' => 'ساعت های تجاری',
+    'Duration' => 'دوشنبه - جمعه',
+    'Sunday' => 'یکشنبه',
+    'Closed' => 'بسته شد',
+    'Newsletter' => 'روزنامه',
+    'newsDetail' => 'لبنیات ضامن سلامتی شما هست',
+    'SignUp' => 'را جستر کردن',
+    'CopyRight' => 'تمام قوانین محفوظ است.',
+    'Designed_By' => 'طراحی شده توسط',
+    'name' => 'فیض محمد',
+    'Follow_Us' => 'مارا دنبال کنید',
+    
+    ]
+
+?>

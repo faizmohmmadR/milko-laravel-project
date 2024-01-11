@@ -19,6 +19,7 @@ use App\Models\Purchese;
 use App\Models\Sales;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,12 +81,19 @@ Route::resource('product',ProductController::class);
 Route::resource('sales',SalesController::class);
 Route::resource('purches',PurchesController::class);
 
+Route::get('/locale/{locale}',function($locale){
+        app()->setlocale($locale);
+
+        Session()->put('locale',$locale); 
+        return redirect()->back();
+})->name('locale');
+
 Route::get('test',function(){
     return Employe::find(1)->userInof;
 });
 
 Route::get('test',function(){
-    return Product::find(1)->sales;
+    return Purchese::find(1)->products;
 });
 
 

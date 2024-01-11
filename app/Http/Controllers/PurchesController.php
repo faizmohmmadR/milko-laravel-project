@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Purchese;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PurchesController extends Controller
 {
@@ -40,10 +41,9 @@ class PurchesController extends Controller
             'totalPrice' => 'required|max:50',
         ]);
 
+        $user = Auth::user();
         $purches = new Purchese();
-        
-        $purches->productID   =  $request->input('productID');
-        $purches->userID      =  1;
+        $purches->userID      =  $user->id;
         $purches->branchID    =  $request->input('branchID');
         $purches->categoryID  =  $request->input('categoryID');
         $purches->customerID  =  $request->input('customerID');
@@ -52,6 +52,8 @@ class PurchesController extends Controller
         $purches->unitePrice  =  $request->input('unitePrice');
         $purches->totalPrice  = $request->input('totalPrice');
         $purches->save();
+
+        $purches->products()->attach($request->productID);
 
         return redirect()->route('purches.index');
     }
@@ -69,13 +71,13 @@ class PurchesController extends Controller
      */
     public function edit(Purchese $purch)
     {
-        return view('backend.purcheses.editPurcheses')->with('purches',$purch);
+        return view('backend.purcheses.editPurcheses')->with('purches',$purch)->with('purchesProduct',$purch->products);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Purchese $purches)
+    public function update(Request $request, Purchese $purch)
     {
         $request->validate([
             'productID' => 'required|max:50',
@@ -88,15 +90,18 @@ class PurchesController extends Controller
             'totalPrice' => 'required|max:50',
         ]);
 
-        $purches->productID  = $request->productID;
-        $purches->branchID  = $request->branchID;
-        $purches->categoryID  = $request->categoryID;
-        $purches->customerID  = $request->customerID;
-        $purches->quantity  = $request->quantity;
-        $purches->unite  = $request->unite;
-        $purches->unitePrice  = $request->unitePrice;
-        $purches->totalPrice  = $request->totalPrice;
-        $purches->save();
+        $user = Auth::user();
+        
+        $purch->userID = $user->id;
+        $purch->categoryID  = $request->categoryID;
+        $purch->customerID  = $request->customerID;
+        $purch->quantity  = $request->quantity;
+        $purch->unite  = $request->unite;
+        $purch->unitePrice  = $request->unitePrice;
+        $purch->totalPrice  = $request->totalPrice;
+        $purch->save();
+        
+        $purch->products()->attach($request->productID);
         return redirect()->route('purches.index');
     }
 

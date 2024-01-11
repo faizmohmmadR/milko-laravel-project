@@ -27,8 +27,16 @@
             @foreach($purches as $purches)
             <tr>
                 
-                <td>{{$purches->id}}</td>
-                <td>{{$purches->products}}</td>	
+               <td>{{$purches->id}}</td>
+                <td>
+                  <ul style="list-style-type: none;">
+                    @foreach($purches->products as $product)
+                      <li>
+                        {{$product->ProductName}}
+                      </li>
+                    @endforeach
+                  </ul>
+                </td>	
                 <td>{{$purches->user->name}}</td>	
                 <td>{{$purches->branch->branchName}}</td>	
                 <td>{{$purches->category->categoryName}}</td>	

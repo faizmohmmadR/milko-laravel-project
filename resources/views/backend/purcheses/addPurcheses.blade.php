@@ -2,9 +2,14 @@
 
 use App\Models\Address;
 use App\Models\Branch;
+use App\Models\Category;
+use App\Models\Customer;
+use App\Models\Product;
 
-     $addresses = Address::all();
+     $products = Product::all();
+     $categoryes = Category::all();
      $branches = Branch::all();
+     $customeres = Customer::all();
 ?>
 
 @extends('backend.dashboard.index')
@@ -14,9 +19,14 @@ use App\Models\Branch;
   <div class="card-body">
   <form action="{{route('purches.store')}}" method="POST" style="width: 80vh;margin: 0px auto">
   @csrf
-     <div class="mb-3">
+  <div class="mb-3">
          <label for="exampleInputEmail1" class="form-label">Product </label>
-         <input type="number" name="productID" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+         <select name="productID[]" id="" multiple >
+               @foreach($products as $product)
+               <option value="{{$product->id}}">{{$product->ProductName}}</option>
+               @endforeach
+         </select>
+         
          @error('productID')
               <p class="text-danger">{{ $message }}</p>
          @enderror
@@ -25,7 +35,11 @@ use App\Models\Branch;
      
      <div class="mb-3">
          <label for="exampleInputPassword1" class="form-label"> Branch</label>
-         <input type="number" name="branchID" class="form-control" id="exampleInputPassword1">
+         <select name="branchID" id="">
+               @foreach($branches as $branch)
+               <option value="{{$branch->id}}">{{$branch->branchName}}</option>
+               @endforeach
+         </select>
          @error('branchID')
               <p class="text-danger">{{ $message }}</p>
          @enderror
@@ -33,7 +47,12 @@ use App\Models\Branch;
 
      <div class="mb-3">
          <label for="exampleInputPassword1" class="form-label">Category</label>
-         <input type="number" name="categoryID" class="form-control" id="exampleInputPassword1">
+         <select name="categoryID" id="">
+               @foreach($categoryes as $category)
+               <option value="{{$category->id}}">{{$category->categoryName}}</option>
+               @endforeach
+         </select>
+
          @error('categoryID')
               <p class="text-danger">{{ $message }}</p>
          @enderror
@@ -42,7 +61,11 @@ use App\Models\Branch;
 
      <div class="mb-3">
          <label for="exampleInputPassword1" class="form-label">Customer</label>
-         <input type="number" name="customerID" class="form-control" id="exampleInputPassword1">
+         <select name="customerID" id="" >
+               @foreach($customeres as $customer)
+               <option value="{{$customer->id}}">{{$customer->customerName}}</option>
+               @endforeach
+         </select>
          @error('customerID')
               <p class="text-danger">{{ $message }}</p>
          @enderror
@@ -50,7 +73,7 @@ use App\Models\Branch;
 
      <div class="mb-3">
          <label for="exampleInputPassword1" class="form-label"> Quantity</label>
-         <input type="text" name="quantity" class="form-control" id="exampleInputPassword1">
+         <input type="number" name="quantity" class="form-control" id="exampleInputPassword1">
          @error('quantity')
               <p class="text-danger">{{ $message }}</p>
          @enderror
@@ -59,7 +82,13 @@ use App\Models\Branch;
      
      <div class="mb-3">
          <label for="exampleInputPassword1" class="form-label">Unite of Product</label>
-         <input type="text" name="unite" class="form-control" id="exampleInputPassword1">
+         <select name="unite" id="">
+               <option value="Kg">Kg</option>
+               <option value="Danah">Danah</option>
+               <option value="Charyak">Charyak</option>
+               <option value="Pow">Pow</option>
+               <option value="Sir">Sir</option>
+         </select>
          @error('unite')
               <p class="text-danger">{{ $message }}</p>
          @enderror

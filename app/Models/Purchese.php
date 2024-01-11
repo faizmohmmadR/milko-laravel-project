@@ -26,5 +26,9 @@ class Purchese extends Model
         return $this->belongsTo(Branch::class,'branchID','id');
     }
 
+    public function products(){
+        return $this->belongsToMany(Product::class,'_products__purcheses','purchesID','productID');
+    }
+
     protected $fillable = ['productID,userID,branchID,categoryID,customerID,quantity,unite,unitePrice,totalPrice'];
 }

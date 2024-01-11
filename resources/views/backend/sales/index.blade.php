@@ -11,7 +11,7 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>productID</th>	
+                <th>products</th>	
                 <th>user</th>	
                 <th>branch</th>	
                 <th>category</th>	
@@ -27,7 +27,15 @@
             @foreach($sales as $sale)
             <tr>
                 <td>{{$sale->id}}</td>
-                <td>{{$sale->products}}</td>	
+                <td>
+                  <ul style="list-style-type: none;">
+                      @foreach($sale->products as $product)
+                      <li>
+                        {{$product->ProductName}}
+                      </li>
+                      @endforeach
+                  </ul>
+                </td>	
                 <td>{{$sale->user->name}}</td>	
                 <td>{{$sale->branch->branchName}}</td>	
                 <td>{{$sale->category->categoryName}}</td>	
