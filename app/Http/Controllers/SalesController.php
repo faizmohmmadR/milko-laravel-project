@@ -119,6 +119,6 @@ class SalesController extends Controller
     public function destroy(Sales $sale)
     {
         $sale->delete();
-        return redirect()->route('sales.index');
+        return "success";
     }
 }

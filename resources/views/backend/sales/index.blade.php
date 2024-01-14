@@ -1,13 +1,13 @@
 @extends('backend.dashboard.index')
 
 @section('contents')
-<div class="container-fluid" style="padding: 10px; background-color: gray">
-  <div class="card-header" style="display: flex; justify-content: space-around;align-items: center">
-   <h3 style="color: white;"> Sales</h3>
+  <div class="card" style="border-radius: 0;margin: 15px; width: 100%">
+  <div class="card-header" style="display: flex;justify-content:space-between;align-items:center">
+    <h5>Sales</h5>
     <a href="{{route('sales.create')}}" class="btn btn-success">Add Sales</a>
-</div>
+  </div>
   <div class="card-body">
-    <table class="table">
+    <table class="table table-responsive">
         <thead>
             <tr>
                 <th>No</th>
@@ -53,15 +53,8 @@
                     </svg>
                     </a>
                     <span style="padding: 5px;">|</span>
-                <form  action="{{route('sales.destroy',['sale'=>$sale->id])}}" method='POST' style="width: 80vh;margin: 0px auto">
-                  @csrf
-                  @method('DELETE')
-                  <button style="border: 0px;outline: 0px;background-color: white;color: red" type="submit">  
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-                  </svg>
-                  </button>
-                </form>  
+                <!-- <form  action="{{route('sales.destroy',['sale'=>$sale->id])}}" method='POST' style="width: 80vh;margin: 0px auto"> -->
+                <a href="#" class="delete" data-id="{{$sale->id}}">delete</a>
                 </div>
               </th>  
             </tr>
@@ -74,46 +67,40 @@
 
 
 @section('script')
-<script>
+  <script>
+   $('.delete').click(function(e){
+  e.preventDefault();
 
-    $('.delete').click(function(){
-        Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-         icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-          if (result.isConfirmed) {
+  var saleId = $(this).data('id');
+  var url = 'sales/' + saleId;
 
-            var id = $(this).attr('id');
-            
-            var url = 'address/'+id;
-
-            $.ajax({
-                headers: {'X-SCRF-TOKEN': $('meta[name="csrf-token:"]').attr('content')},
-                url: url,
-                type: 'DELETE',
-                dataType: 'json',
-                data: {"_method": 'DELETE',},
-                success: function(data){
-                    location.reload()
-                }
-            })
-
-
-            // Swal.fire({
-            //   title: "Deleted!",
-            //   text: "Your file has been deleted.",
-            //   icon: "success"
-            // });
-          }
-        });
-
-    })
-    
-    </script>
-
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        url: url,
+        type: 'DELETE',
+        dataType: 'json',
+        success: function(data) {
+        alert('test')
+        },
+        error: function(xhr, status, error) {
+          location.reload();
+        }
+      });
+    }
+  });
+});
+</script>
 @endsection
+
+
+
