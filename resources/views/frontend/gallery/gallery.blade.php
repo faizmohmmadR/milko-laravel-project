@@ -2,13 +2,13 @@
 
 @section('contents')
 
-@include('frontend.header.header')
+@include('frontend.header.header',array('page'=>$page))
     <!-- Gallery Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="section-title bg-white text-center text-primary px-3">Gallery</p>
-                <h1 class="mb-5">Explore Our Dairy Farm Gallery</h1>
+                <p class="section-title bg-white text-center text-primary px-3">{{__('gallery.gallery')}}</p>
+                <h1 class="mb-5">{{__('gallery.title')}}</h1>
             </div>
             <div class="row g-0">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">

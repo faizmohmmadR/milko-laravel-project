@@ -4,7 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Milko</title>
+    <title>{{__('nav.Milko')}}</title>
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -31,6 +32,9 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @yield('script')
+    
 </head>
 
 <body>
@@ -55,8 +59,8 @@
             </div>
             <div class="col-lg-6 text-end">
                 <div class="h-100 bg-secondary d-inline-flex align-items-center text-dark py-2 px-4">
-                    <span class="me-2 fw-semi-bold"><i class="fa fa-phone-alt me-2" style="padding: 10px"; ></i> {{__('nav.Call_us')}} </span>
-                    <span style="padding: 10px;">+93778587455</span>
+                    <span class="me-2 fw-semi-bold"><i class="fa fa-phone-alt me-2" style="padding-left: 10px"; ></i> {{__('nav.Call_us')}} </span>
+                    <span style="padding-left: 10px;">+93778587455</span>
                 </div>
             </div>
         </div>
@@ -178,7 +182,6 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('frontend/lib/wow/wow.min.js')}}"></script>
     <script src="{{asset('frontend/lib/easing/easing.min.js')}}"></script>
     <script src="{{asset('frontend/lib/waypoints/waypoints.min.js')}}"></script>

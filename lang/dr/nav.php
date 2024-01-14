@@ -11,7 +11,7 @@ return [
     'Gallery' => 'گالری',
     'Features' => 'خصوصیات',
     'Our_Team' => 'تیم ما',
-    'Testimonial' => 'تستونونیال',
+    'Testimonial' => 'تستومونیال',
     'Not_found_page' =>'پیدا نشد',
     'Language' =>'زبان',
     'English' => 'انگلسی',

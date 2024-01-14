@@ -7,7 +7,7 @@ return [
     'Products' => 'Products',
     'Dashboard' => 'Dashboard',
     'Pages' => 'Pages',
-    'Contact' => 'Cotact',
+    'Contact' => 'Contact',
     'Gallery' => 'Gallery',
     'Features' => 'Features',
     'Our_Team' => 'Our',

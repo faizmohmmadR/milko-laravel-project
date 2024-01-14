@@ -37,38 +37,39 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/about',function(){
-    return view('frontend.about.about');
+    return view('frontend.about.about')->with('page',__('web.about'));
 })->name('about');
 
 Route::get('/service',function(){
-    return view('frontend.services.services');
+    return view('frontend.services.services')->with('page',__('web.service'));
 })->name('services');
 
 Route::get('/contact',function(){
-    return view('frontend.contact.contact');
+    return view('frontend.contact.contact')->with('page',__('web.contact'));
 })->name('contact');
 
 Route::get('/products',function(){
-    return view('frontend.products.products');
+    return view('frontend.products.products')->with('page',__('web.product'));
 })->name('products');
 
 Route::get('/gallery',function(){
-    return view('frontend.gallery.gallery');
+    return view('frontend.gallery.gallery')->with('page',__('web.gallery'));
 })->name('gallery');
 
 Route::get('/team',function(){
-    return view('frontend.team.team');
+    return view('frontend.team.team')->with('page',__('web.team'));
 })->name('team');
 
 Route::get('/feature',function(){
-    return view('frontend.feature.feature');
+    return view('frontend.feature.feature')->with('page',__('web.feature'));
 })->name('feature');
 
 Route::get('/testimonial',function(){
-    return view('frontend.testimonial.testimonial');
+    return view('frontend.testimonial.testimonial')->with('page',__('web.testimonial'));
 })->name('testimonial');
+
 Route::get('/notFound',function(){
-    return view('frontend.notFound.notFound');
+    return view('frontend.notFound.notFound')->with('page',__('web.notFound'));
 })->name('notFound');
 
 

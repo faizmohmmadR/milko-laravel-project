@@ -21,7 +21,7 @@ use App\Models\Product;
   @csrf
   <div class="mb-3">
          <label for="exampleInputEmail1" class="form-label">Product </label>
-         <select name="productID[]" id="" multiple >
+         <select name="productID[]" class="form-select form-select-sm" multiple >
                @foreach($products as $product)
                <option value="{{$product->id}}">{{$product->ProductName}}</option>
                @endforeach
@@ -35,7 +35,7 @@ use App\Models\Product;
      
      <div class="mb-3">
          <label for="exampleInputPassword1" class="form-label"> Branch</label>
-         <select name="branchID" id="">
+         <select name="branchID" class="form-select form-select-sm">
                @foreach($branches as $branch)
                <option value="{{$branch->id}}">{{$branch->branchName}}</option>
                @endforeach
@@ -47,7 +47,7 @@ use App\Models\Product;
 
      <div class="mb-3">
          <label for="exampleInputPassword1" class="form-label">Category</label>
-         <select name="categoryID" id="">
+         <select name="categoryID" class="form-select form-select-sm">
                @foreach($categoryes as $category)
                <option value="{{$category->id}}">{{$category->categoryName}}</option>
                @endforeach
@@ -61,7 +61,7 @@ use App\Models\Product;
 
      <div class="mb-3">
          <label for="exampleInputPassword1" class="form-label">Customer</label>
-         <select name="customerID" id="" >
+         <select name="customerID" class="form-select form-select-sm" >
                @foreach($customeres as $customer)
                <option value="{{$customer->id}}">{{$customer->customerName}}</option>
                @endforeach
@@ -82,7 +82,7 @@ use App\Models\Product;
      
      <div class="mb-3">
          <label for="exampleInputPassword1" class="form-label">Unite of Product</label>
-         <select name="unite" id="">
+         <select name="unite" class="form-select form-select-sm">
                <option value="Kg">Kg</option>
                <option value="Danah">Danah</option>
                <option value="Charyak">Charyak</option>

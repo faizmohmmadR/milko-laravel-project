@@ -3,13 +3,13 @@
 
 @section('contents')
 
-@include('frontend.header.header')
+@include('frontend.header.header',array('page'=>$page))
     <!-- Testimonial Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="section-title bg-white text-center text-primary px-3">Testimonial</p>
-                <h1 class="mb-5">What People Say About Our Dairy Farm</h1>
+                <p class="section-title bg-white text-center text-primary px-3">{{__('team.testomonial')}}</p>
+                <h1 class="mb-5">{{__('team.t_desc')}}</h1>
             </div>
             <div class="row g-5 align-items-center">
                 <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
