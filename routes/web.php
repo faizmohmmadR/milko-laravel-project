@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchesController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\ShowController;
 use App\Models\Address;
 use App\Models\Branch;
 use App\Models\Category;
@@ -48,9 +49,7 @@ Route::get('/contact',function(){
     return view('frontend.contact.contact')->with('page',__('web.contact'));
 })->name('contact');
 
-Route::get('/products',function(){
-    return view('frontend.products.products')->with('page',__('web.product'));
-})->name('products');
+Route::get('/products',[ShowController::class,'index'])->name('products');
 
 Route::get('/gallery',function(){
     return view('frontend.gallery.gallery')->with('page',__('web.gallery'));
@@ -112,6 +111,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+});
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
 require __DIR__.'/auth.php';

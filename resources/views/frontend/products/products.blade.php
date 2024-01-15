@@ -80,6 +80,23 @@
     </div>
     <!-- Product End -->
 
+    <div class="container-xxl py-5">
+        <div class="container" style="display: grid;grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;;gap: 50px 50px; " >
+            @foreach($products as $product)
+            <div class="card" style="width: 18rem;">
+                 <img src="{{asset('upload/'.$product->image)}}" class="card-img-top" style="height: 200px;" alt="{{$product->image}}">
+                 <div class="card-body" style="display: flex; justify-content:space-between;border-top:1px solid gray" >
+                   <h5 class="card-title">{{$product->ProductName}}</h5>
+                   <h5 class="card-title">{{$product->price}} AF</h5>
+                 </div>
+                 <div class="card-body" style="display: flex; justify-content:space-between;" >
+                 <p class="card-text">{{$product->description}}</p>
+                 </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
 
     <!-- Features Start -->
     <div class="container-xxl py-5">

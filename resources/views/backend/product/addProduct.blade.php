@@ -14,7 +14,7 @@ use App\Models\Category;
 <h3 style="text-align: center;">Add Product</h3>
 <hr>
   <div class="card-body">
-  <form action="{{route('product.store')}}" method="POST" style="width: 80vh;margin: 0px auto">
+  <form action="{{route('product.store')}}" method="POST" style="width: 80vh;margin: 0px auto" enctype="multipart/form-data">
   @csrf
      <div class="mb-3">
          <label for="exampleInputEmail1" class="form-label">Product Name</label>
@@ -87,6 +87,15 @@ use App\Models\Category;
               <p class="text-danger">{{ $message }}</p>
          @enderror
      </div>
+
+     <div class="mb-3">
+         <label for="exampleInputPassword1" class="form-label">Image</label>
+         <input type="file" name="image" >
+         @error('image')
+              <p class="text-danger">{{ $message }}</p>
+         @enderror
+     </div>
+
      <button type="submit" class="btn btn-primary">Submit</button>
 </form>
  </div>
