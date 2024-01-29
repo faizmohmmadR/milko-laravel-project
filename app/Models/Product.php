@@ -31,5 +31,5 @@ class Product extends Model
     }
 
 
-    protected $fillable = ['ProductName',	'description',	'price',	'quantity',	'unite',	'userID',	'branchID',	'categoryID',];
+    protected $fillable = ['ProductName',	'description',	'price',	'quantity',	'unite',	'userID',	'branchID',	'categoryID','image'];
 }

@@ -89,6 +89,15 @@ use App\Models\Category;
               <p class="text-danger">{{ $message }}</p>
          @enderror
      </div>
+
+     <div class="mb-3">
+         <label for="exampleInputPassword1" class="form-label">Image</label>
+         <input type="file" name="image">
+         @error('image')
+              <p class="text-danger">{{ $message }}</p>
+         @enderror
+     </div>
+
      <button type="submit" class="btn btn-primary">update</button>
 </form>
  </div>

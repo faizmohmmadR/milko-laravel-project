@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\File as ImageFile;
 
 class ProductController extends Controller
 {
@@ -39,8 +41,15 @@ class ProductController extends Controller
             'unite' => 'required|max: 50',
             'branchID' => 'required|max: 50',
             'categoryID' => 'required|max: 50',
+            'image' => 'required|image',
         ]);
 
+        $image_new_name = '';
+        if($request->has('image')){
+            $image = $request->image;
+            $image_new_name = time(). $image->getClientOriginalName();
+            $image->move('upload',$image_new_name);
+        }
         $user = Auth::user();
         Product::create([ 
             'ProductName' => $request->ProductName,	
@@ -50,7 +59,9 @@ class ProductController extends Controller
             'unite' => $request->unite,	
             'userID' => $user->id,	
             'branchID' => $request->branchID,	
-            'categoryID' => $request->categoryID]);
+            'categoryID' => $request->categoryID,
+            'image' => $image_new_name
+        ]);
 
             return redirect()->route('product.index');
     }
@@ -87,7 +98,18 @@ class ProductController extends Controller
             'unite' => 'required|max: 50',
             'branchID' => 'required|max: 50',
             'categoryID' => 'required|max: 50',
+            // 'image' => 'required|image',
         ]);
+
+        // $image_new_name = '';
+        // if($request->has('image')){
+        //     // unlink('upload/'.$product->image);
+        //     $image = $request->image;
+        //     $image_new_name = time(). $image->getClientOriginalName();
+        //     $image->move('upload',$image_new_name);
+        // }
+
+
 
          $product->ProductName  = $request->ProductName;
          $product->description  = $request->description;
@@ -96,6 +118,7 @@ class ProductController extends Controller
          $product->unite  = $request->unite;
          $product->branchID  = $request->branchID;
          $product->categoryID  = $request->categoryID;
+        //  $product->image = $image_new_name;
          $product->save();
 
         return redirect()->route('product.index');

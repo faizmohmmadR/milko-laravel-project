@@ -99,7 +99,6 @@
                     <div class="dropdown-menu bg-light m-0">
                         <a href="{{route('locale',['locale'=>'dr'])}}" class="dropdown-item">{{__('nav.Dari')}}</a>
                         <a href="{{route('locale',['locale'=>'en'])}}" class="dropdown-item">{{__('nav.English')}}</a>
-
                     </div>
                 </div>
             </div>
